@@ -5,45 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>backphobic</title>
 
-    <!-- Chrome Tab Logos (Favicons) loaded from archive -->
     <link rel="icon" href="https://web.archive.org/web/20240911115712im_/https://i0.wp.com/backphobic.com/wp-content/uploads/2024/04/cropped-cropped-deadman9-1.png" sizes="32x32">
     <link rel="icon" href="https://web.archive.org/web/20240911115712im_/https://i0.wp.com/backphobic.com/wp-content/uploads/2024/04/cropped-cropped-deadman9-1.png" sizes="192x192">
     <link rel="apple-touch-icon" href="https://web.archive.org/web/20240911115712im_/https://i0.wp.com/backphobic.com/wp-content/uploads/2024/04/cropped-cropped-deadman9-1.png">
 
-    <!-- WordPress Core Icons (needed for the password eye icon) -->
     <link rel="stylesheet" id="dashicons-css" href="https://s.w.org/wp-includes/css/dashicons.min.css" media="all">
 
     <style>
-        /* Base Page Setup */
+        /* Base Page Setup - No extra centering constraints here */
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
-            background-color: #515e6d;
             font-family: sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-color: transparent !important;
         }
 
-        /* The Custom Background Image */
+        /* The Custom Background Image - Now fixed and covering the whole viewport */
         #password-protected-background {
             background-image: url('https://web.archive.org/web/20240911115712im_/https://backphobic.com/wp-content/uploads/2024/09/pwpage1.jpg');
-            background-attachment: scroll;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-attachment: fixed;
             background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
             z-index: -1;
         }
 
-        /* Login Form Styling */
+        /* Form Layer Centering */
         #login {
+            position: fixed; /* Keep it centrally floating */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* The trick to center statically */
             width: 300px;
-            position: relative;
             z-index: 10;
         }
 
@@ -51,7 +50,7 @@
             background-color: transparent !important;
             border: none !important;
             box-shadow: none !important;
-            padding: 100px 34px !important;
+            padding: 0 !important; /* Removed huge padding that created the column effect */
         }
 
         label:not([for="password_protected_rememberme"]) {
@@ -107,10 +106,8 @@
 </head>
 <body>
 
-    <!-- Background Image Layer -->
     <div id="password-protected-background"></div>
 
-    <!-- The Form Layer -->
     <div id="login">
         <form name="loginform" id="loginform" action="#" method="post">
             <div class="user-pass-wrap">
@@ -129,7 +126,6 @@
         </form>
     </div>
 
-    <!-- Small script to make the password hide/show button actually work -->
     <script>
         document.getElementById('pp-hide-show-password').addEventListener('click', function(e) {
             e.preventDefault();
